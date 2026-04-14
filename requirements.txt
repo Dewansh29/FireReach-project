@@ -1,0 +1,22 @@
+# Web Framework
+fastapi
+uvicorn[standard]
+
+# LangChain & LangGraph
+langchain
+langchain-openai
+langchain-community
+langgraph
+
+# Environment variables
+python-dotenv
+
+# HTTP client
+httpx
+requests
+
+# Pydantic (data validation, included with FastAPI but pinned here)
+pydantic
+
+# Optional: LangSmith tracing
+langsmith
