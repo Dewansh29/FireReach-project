@@ -9,7 +9,7 @@ import ResultsView from './components/ResultsView';
 const API_URL = "http://127.0.0.1:8000/api/trigger-agents";
 
 function App() {
-  const [appState, setAppState] = useState('idle'); // 'idle', 'processing', 'complete', 'error'
+  const [appState, setAppState] = useState('idle'); // 'idle' | 'processing' | 'complete' | 'error'
   const [results, setResults] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
-      <motion.header 
+      <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -83,7 +83,11 @@ function App() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <ResultsView results={results} onReset={handleReset} />
+              <ResultsView
+                results={results}
+                onReset={handleReset}
+                candidateEmail={results.candidate_email}
+              />
             </motion.div>
           )}
 
@@ -97,7 +101,11 @@ function App() {
             >
               <h2 style={{ color: '#ef4444', marginBottom: '1rem' }}>Processing Error</h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>{errorMsg}</p>
-              <button className="btn-primary" onClick={handleReset} style={{ background: '#3f3f46', width: 'auto', margin: '0 auto' }}>
+              <button
+                className="btn-primary"
+                onClick={handleReset}
+                style={{ background: '#3f3f46', width: 'auto', margin: '0 auto' }}
+              >
                 Try Again
               </button>
             </motion.div>

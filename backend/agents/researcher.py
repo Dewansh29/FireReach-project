@@ -4,6 +4,7 @@ import requests
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from backend.state import OutreachState
+from backend.agents.hunter import search_emails_by_domain
 
 # Load environment variables
 load_dotenv()
@@ -49,6 +50,10 @@ def research_node(state: OutreachState):
     search_query = f"{company} {icp} recent news pain points challenges"
     search_context = search_serper(search_query)
     
+    # Hunter.io Email Search
+    print("--- OSINT AGENT: Finding emails via Hunter.io ---")
+    hunter_emails = search_emails_by_domain(company)
+    
     prompt = f"""
     You are an elite B2B OSINT researcher. 
     Target Role: {icp}
@@ -66,5 +71,6 @@ def research_node(state: OutreachState):
     # Return the updated state
     return {
         "research_data": {"insights": response.content},
+        "hunter_emails": hunter_emails,
         "status": "research_complete"
     }

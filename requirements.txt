@@ -6,6 +6,7 @@ uvicorn[standard]
 langchain
 langchain-openai
 langchain-community
+langchain-groq
 langgraph
 
 # Environment variables

@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Search, PenTool, CheckCircle, Send } from 'lucide-react';
 
 const stages = [
-  { icon: Search, text: "OSINT Agent: Researching live web data..." },
+  { icon: Search, text: "OSINT Agent: Researching live web data & Hunter.io..." },
   { icon: PenTool, text: "Drafter Agent: Synthesizing value proposition..." },
-  { icon: CheckCircle, text: "QA Agent: Reviewing against constraints constraints..." },
-  { icon: Send, text: "Finalizing & Dispatching to Formspree..." }
+  { icon: CheckCircle, text: "QA Agent: Reviewing against constraints..." },
+  { icon: Send, text: "Finalizing & Generating Gmail draft..." }
 ];
 
 export default function AgentLoader() {

@@ -6,7 +6,8 @@ export default function FireReachForm({ onSubmit }) {
     target_role: '',
     company_name: '',
     company_domain: '',
-    value_proposition: ''
+    value_proposition: '',
+    candidate_email: ''
   });
 
   const handleChange = (e) => {
@@ -60,21 +61,36 @@ export default function FireReachForm({ onSubmit }) {
           </div>
         </div>
 
-        <div className="input-group">
-          <label className="input-label" htmlFor="company_domain">Company Domain</label>
-          <input 
-            type="text" 
-            id="company_domain" 
-            name="company_domain" 
-            placeholder="e.g. acme.com (used for OSINT search)" 
-            className="input-field"
-            value={formData.company_domain}
-            onChange={handleChange}
-            required
-          />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+          <div className="input-group">
+            <label className="input-label" htmlFor="company_domain">Company Domain</label>
+            <input 
+              type="text" 
+              id="company_domain" 
+              name="company_domain" 
+              placeholder="e.g. acme.com" 
+              className="input-field"
+              value={formData.company_domain}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <label className="input-label" htmlFor="candidate_email">Target Email (Optional)</label>
+            <input 
+              type="email" 
+              id="candidate_email" 
+              name="candidate_email" 
+              placeholder="e.g. jdoe@acme.com" 
+              className="input-field"
+              value={formData.candidate_email}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
-        <div className="input-group">
+        <div className="input-group" style={{marginTop: '1rem'}}>
           <label className="input-label" htmlFor="value_proposition">Value Proposition</label>
           <textarea 
             id="value_proposition" 
